@@ -15,21 +15,21 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('product_id'); //big integer
-            $table->string('product_code')->default('');
-            $table->string('product_desc')->default('');
-            $table->string('product_name')->default('');
-            $table->decimal('on_hand',20)->default(0);
+            $table->string('product_code')->default('')->nullable();
+            $table->string('product_desc')->default('')->nullable();
+            $table->string('product_name')->default('')->nullable();
+            $table->decimal('on_hand',20)->default(0)->nullable();
 
             //foreign key for the categories
-            $table->integer('category_id')->unsigned()->default(0);
+            $table->integer('category_id')->unsigned()->default(0)->nullable();
             $table->foreign('category_id')->references('category_id')->on('categories');
 
             //foreign key for the brands
-            $table->integer('brand_id')->unsigned()->default(0);
+            $table->integer('brand_id')->unsigned()->default(0)->nullable();
             $table->foreign('brand_id')->references('brand_id')->on('brands');
 
             //foreign key for the units
-            $table->integer('unit_id')->unsigned()->default(0);
+            $table->integer('unit_id')->unsigned()->default(0)->nullable();
             $table->foreign('unit_id')->references('unit_id')->on('units');
 
             $table->integer('deleted_by')->default(0);

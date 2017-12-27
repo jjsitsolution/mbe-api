@@ -15,11 +15,11 @@ class CreateCustomerAccountsTable extends Migration
     {
         Schema::create('customer_accounts', function (Blueprint $table) {
             $table->bigIncrements('cus_account_id'); //big integer
-            $table->string('cus_user_name')->default('');
-            $table->string('cus_pword')->default('');
+            $table->string('cus_user_name')->default('')->nullable();
+            $table->string('cus_pword')->default('')->nullable();
 
             //foreign key for the customer
-            $table->integer('customer_id')->unsigned()->default(0);
+            $table->bigInteger('customer_id')->unsigned()->default(0)->nullable();
             $table->foreign('customer_id')->references('customer_id')->on('customers');
 
             $table->softDeletes(); //add soft delete column which is deleted at

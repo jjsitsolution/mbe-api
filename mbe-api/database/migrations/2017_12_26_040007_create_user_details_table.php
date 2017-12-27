@@ -15,13 +15,13 @@ class CreateUserDetailsTable extends Migration
     {
         Schema::create('user_details', function (Blueprint $table) {
             $table->increments('user_detail_id');
-            $table->string('user_fname')->default('');
-            $table->string('user_lname')->default('');
-            $table->string('user_mname')->default('');
-            $table->string('user_avatar')->default('');
+            $table->string('user_fname')->default('')->nullable();
+            $table->string('user_lname')->default('')->nullable();
+            $table->string('user_mname')->default('')->nullable();
+            $table->string('user_avatar')->default('')->nullable();
 
             //foreign key for the user accounts
-            $table->integer('user_account_id')->unsigned()->default(0);
+            $table->integer('user_account_id')->unsigned()->default(0)->nullable();
             $table->foreign('user_account_id')->references('user_account_id')->on('user_accounts');
 
             $table->softDeletes(); //add soft delete column which is deleted at
