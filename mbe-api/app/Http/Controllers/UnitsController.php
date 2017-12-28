@@ -17,10 +17,9 @@ class UnitsController extends Controller
     public function index()
     {
         //response all data
-        return response()->json(
-            new UnitResource(Unit::all()) ,
-            200
-        );
+        return ( new UnitResource(Unit::all()) )
+                ->response()
+                ->setStatusCode(200);
     }
 
     /**
@@ -42,10 +41,9 @@ class UnitsController extends Controller
     public function store(Request $request)
     {
         //return json based from the resource data
-        return response()->json(
-            new UnitResource( Unit::create( $request->all() ) ),
-            201
-        );
+        return ( new UnitResource( Unit::create( $request->all() ) ) )
+                ->response()
+                ->setStatusCode(201);
 
     }
 
@@ -58,10 +56,9 @@ class UnitsController extends Controller
     public function show(Unit $unit)
     {
         //generate the response json based from the data array return by resource
-        return response()->json(
-            new UnitResource( $unit ),
-            200
-        );
+        return ( new UnitResource( $unit ) )
+                ->response()
+                ->setStatusCode(200);
     }
 
     /**
@@ -87,10 +84,9 @@ class UnitsController extends Controller
         //update unit based on the http json body that is sent
         $unit->update( $request->all() );
 
-        return response()->json(
-            new UnitResource( $unit ),
-            200
-        );
+        return ( new UnitResource( $unit ) )
+            ->response()
+            ->setStatusCode(200);
     }
 
     /**

@@ -17,10 +17,9 @@ class BrandsController extends Controller
     public function index()
     {
         //response all data
-        return response()->json(
-            new BrandResource(Brand::all()) ,
-            200
-        );
+        return (new BrandResource(Brand::all()) )
+                ->response()
+                ->setStatusCode(200);
     }
 
     /**
@@ -42,10 +41,9 @@ class BrandsController extends Controller
     public function store(Request $request)
     {
         //return json based from the resource data
-        return response()->json(
-            new BrandResource( Brand::create( $request->all() ) ),
-            201
-        );
+        return ( new BrandResource( Brand::create( $request->all() ) ) )
+                ->response()
+                ->setStatusCode(201);
 
     }
 
@@ -58,10 +56,10 @@ class BrandsController extends Controller
     public function show(Brand $brand)
     {
         //generate the response json based from the data array return by resource
-        return response()->json(
-            new BrandResource( $brand ),
-            200
-        );
+        return (new BrandResource( $brand ))
+                ->response()
+                ->setStatusCode(200);
+
     }
 
     /**
@@ -87,10 +85,9 @@ class BrandsController extends Controller
         //update brand based on the http json body that is sent
         $brand->update( $request->all() );
 
-        return response()->json(
-            new BrandResource( $brand ),
-            200
-        );
+        return ( new BrandResource( $brand ) )
+                ->response()
+                ->setStatusCode(200);
     }
 
     /**

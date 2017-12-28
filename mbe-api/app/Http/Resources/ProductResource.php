@@ -16,4 +16,6 @@ class ProductResource extends Resource
     {
         return parent::toArray($request);
     }
+
+
 }

@@ -17,10 +17,9 @@ class CustomersController extends Controller
     public function index()
     {
         //response all data
-        return response()->json(
-            new CustomerResource(Customer::all()) ,
-            200
-        );
+        return ( new CustomerResource(Customer::all()) )
+                ->response()
+                ->setStatusCode(200);
     }
 
     /**
@@ -42,10 +41,9 @@ class CustomersController extends Controller
     public function store(Request $request)
     {
         //return json based from the resource data
-        return response()->json(
-            new CustomerResource( Customer::create( $request->all() ) ),
-            201
-        );
+        return ( new CustomerResource( Customer::create( $request->all() ) ) )
+                ->response()
+                ->setStatusCode(201);
 
     }
 
@@ -58,10 +56,9 @@ class CustomersController extends Controller
     public function show(Customer $customer)
     {
         //generate the response json based from the data array return by resource
-        return response()->json(
-            new CustomerResource( $customer ),
-            200
-        );
+        return ( new CustomerResource( $customer ) )
+                ->response()
+                ->setStatusCode(200);
     }
 
     /**
@@ -87,10 +84,9 @@ class CustomersController extends Controller
         //update customer based on the http json body that is sent
         $customer->update( $request->all() );
 
-        return response()->json(
-            new CustomerResource( $customer ),
-            200
-        );
+        return ( new CustomerResource( $customer ) )
+                ->response()
+                ->setStatusCode(200);
     }
 
     /**

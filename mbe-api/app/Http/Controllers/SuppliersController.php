@@ -17,10 +17,9 @@ class SuppliersController extends Controller
     public function index()
     {
         //response all data
-        return response()->json(
-            new SupplierResource(Supplier::all()) ,
-            200
-        );
+        return ( new SupplierResource(Supplier::all()) )
+                ->response()
+                ->setStatusCode(200);
     }
 
     /**
@@ -42,10 +41,9 @@ class SuppliersController extends Controller
     public function store(Request $request)
     {
         //return json based from the resource data
-        return response()->json(
-            new SupplierResource( Supplier::create( $request->all() ) ),
-            201
-        );
+        return ( new SupplierResource( Supplier::create( $request->all() ) ) )
+                ->response()
+                ->setStatusCode(201);
 
     }
 
@@ -58,10 +56,9 @@ class SuppliersController extends Controller
     public function show(Supplier $supplier)
     {
         //generate the response json based from the data array return by resource
-        return response()->json(
-            new SupplierResource( $supplier ),
-            200
-        );
+        return ( new SupplierResource( $supplier ) )
+                ->response()
+                ->setStatusCode(200);
     }
 
     /**
@@ -87,10 +84,9 @@ class SuppliersController extends Controller
         //update supplier based on the http json body that is sent
         $supplier->update( $request->all() );
 
-        return response()->json(
-            new SupplierResource( $supplier ),
-            200
-        );
+        return ( new SupplierResource( $supplier ) )
+                ->response()
+                ->setStatusCode(200);
     }
 
     /**

@@ -17,10 +17,10 @@ class ProductsController extends Controller
     public function index()
     {
         //response all data
-        return response()->json(
-            new ProductResource(Product::all()) ,
-                200
-        );
+        return  ( new ProductResource(Product::all()) )
+                ->response()
+                ->setStatusCode(200);
+
     }
 
     /**
@@ -41,12 +41,11 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //return json based from the resource data
-       return response()->json(
-            new ProductResource( Product::create( $request->all() ) ),
-            201
-        );
 
+        //return json based from the resource data
+       return ( new ProductResource( Product::create( $request->all() ) ))
+                ->response()
+                ->setStatusCode(201);
     }
 
     /**
@@ -58,10 +57,9 @@ class ProductsController extends Controller
     public function show(Product $product)
     {
         //generate the response json based from the data array return by resource
-        return response()->json(
-            new ProductResource( $product ),
-            200
-        );
+        return (new ProductResource( $product ) )
+                ->response()
+                ->setStatusCode(200);
     }
 
     /**
@@ -87,10 +85,9 @@ class ProductsController extends Controller
         //update product based on the http json body that is sent
         $product->update( $request->all() );
 
-        return response()->json(
-            new ProductResource( $product ),
-            200
-        );
+        return (new ProductResource( $product ))
+            ->response()
+            ->setStatusCode(200);
     }
 
     /**

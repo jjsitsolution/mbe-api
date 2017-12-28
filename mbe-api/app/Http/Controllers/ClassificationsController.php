@@ -17,10 +17,9 @@ class ClassificationsController extends Controller
     public function index()
     {
         //response all data
-        return response()->json(
-            new ClassificationResource(Classification::all()) ,
-            200
-        );
+        return ( new ClassificationResource(Classification::all()) )
+                ->response()
+                ->setStatusCode(200);
     }
 
     /**
@@ -42,11 +41,9 @@ class ClassificationsController extends Controller
     public function store(Request $request)
     {
         //return json based from the resource data
-        return response()->json(
-            new ClassificationResource( Classification::create( $request->all() ) ),
-            201
-        );
-
+        return ( new ClassificationResource( Classification::create( $request->all() ) ) )
+                ->response()
+                ->setStatusCode(201);
     }
 
     /**
@@ -58,10 +55,9 @@ class ClassificationsController extends Controller
     public function show(Classification $classification)
     {
         //generate the response json based from the data array return by resource
-        return response()->json(
-            new ClassificationResource( $classification ),
-            200
-        );
+        return ( new ClassificationResource( $classification ) )
+                ->response()
+                ->setStatusCode(200);
     }
 
     /**
@@ -87,10 +83,9 @@ class ClassificationsController extends Controller
         //update classification based on the http json body that is sent
         $classification->update( $request->all() );
 
-        return response()->json(
-            new ClassificationResource( $classification ),
-            200
-        );
+        return ( new ClassificationResource( $classification ) )
+            ->response()
+            ->setStatusCode(200);
     }
 
     /**
