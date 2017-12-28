@@ -20,9 +20,9 @@ class CreateProductsTable extends Migration
             $table->string('product_name')->default('')->nullable();
             $table->decimal('on_hand',20)->default(0)->nullable();
 
-            //foreign key for the categories
-            $table->integer('category_id')->unsigned()->default(0)->nullable();
-            $table->foreign('category_id')->references('category_id')->on('categories');
+            //foreign key for the classifications
+            $table->integer('classification_id')->unsigned()->default(0)->nullable();
+            $table->foreign('classification_id')->references('classification_id')->on('classifications');
 
             //foreign key for the brands
             $table->integer('brand_id')->unsigned()->default(0)->nullable();
