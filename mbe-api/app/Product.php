@@ -17,7 +17,7 @@ class Product extends Model
         'product_name',
         'on_hand',
         'on_hand',
-        'category_id',
+        'classification_id',
         'brand_id',
         'unit_id',
         'deleted_by',
