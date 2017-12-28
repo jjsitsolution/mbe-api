@@ -17,7 +17,7 @@ class ClassificationsController extends Controller
     public function index()
     {
         //response all data
-        return ( new ClassificationResource(Classification::all()) )
+        return ( ClassificationResource::collection(Classification::all()) )
                 ->response()
                 ->setStatusCode(200);
     }

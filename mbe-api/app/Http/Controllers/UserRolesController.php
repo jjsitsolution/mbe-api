@@ -17,7 +17,7 @@ class UserRolesController extends Controller
     public function index()
     {
         //response all data
-        return ( new UserRoleResource(UserRole::all()) )
+        return ( UserRoleResource::collection(UserRole::all()) )
                 ->response()
                 ->setStatusCode(200);
     }

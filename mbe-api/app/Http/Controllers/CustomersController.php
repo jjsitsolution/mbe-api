@@ -17,7 +17,7 @@ class CustomersController extends Controller
     public function index()
     {
         //response all data
-        return ( new CustomerResource(Customer::all()) )
+        return ( CustomerResource::collection(Customer::all()) )
                 ->response()
                 ->setStatusCode(200);
     }

@@ -17,7 +17,7 @@ class SuppliersController extends Controller
     public function index()
     {
         //response all data
-        return ( new SupplierResource(Supplier::all()) )
+        return ( SupplierResource::collection(Supplier::all()) )
                 ->response()
                 ->setStatusCode(200);
     }

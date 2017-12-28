@@ -17,7 +17,7 @@ class BrandsController extends Controller
     public function index()
     {
         //response all data
-        return (new BrandResource(Brand::all()) )
+        return (BrandResource::collection(Brand::all()) )
                 ->response()
                 ->setStatusCode(200);
     }

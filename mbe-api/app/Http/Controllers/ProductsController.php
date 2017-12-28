@@ -17,7 +17,7 @@ class ProductsController extends Controller
     public function index()
     {
         //response all data
-        return  ( new ProductResource(Product::all()) )
+        return  ( ProductResource::collection( Product::all() ) )
                 ->response()
                 ->setStatusCode(200);
 

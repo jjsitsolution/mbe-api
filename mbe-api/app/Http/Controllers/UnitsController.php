@@ -17,7 +17,7 @@ class UnitsController extends Controller
     public function index()
     {
         //response all data
-        return ( new UnitResource(Unit::all()) )
+        return ( UnitResource::collection(Unit::all()) )
                 ->response()
                 ->setStatusCode(200);
     }
